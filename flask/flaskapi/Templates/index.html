@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <body>
+  
+  <h2>Credit Card Applicant Prediction</h2>
+  
+  <form method="POST" action="/">
+    Annual Income:
+    <input type="number" name="annual_income" value=50000>
+    <br><br>
+    Birthday: (Count backwards from current day (0), -1 means yesterday)
+    <input type="number" name="birthday" value=-8000>
+    <br><br>
+    Days of Employment: (Count backwards from current day(0). If positive, it means the person currently unemployed)
+    <input type="number" name="days_employment" value=-1000>
+    <br><br>
+     Family Size:
+    <input type="number" name="family_size" value=2>
+    <br><br>  
+     If Have a Work Phone:
+    <select id="work_phone" name="work_phone">
+      <option value=1>Yes</option>
+      <option value=0>No</option>
+    </select>
+    <br><br>
+     If Have a Phone:
+    <select id="phone" name="phone">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+    <br><br>
+     If Have an Email:
+    <select id="email" name="email">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+    <br><br>
+     If Have a Car:
+    <select id="car" name="car">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+    <br><br>
+     If Have a Property:
+    <select id="property" name="property">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+    <br><br>
+    Gender:
+    <select id="gender" name="gender">
+      <option value="female">Female</option>
+      <option value="male">Male</option>
+    </select>
+    <br><br>
+    Education Type:
+    <select id="education" name="education">
+      <option value="0">Lower secondary</option>
+      <option value="1">Secondary / secondary special</option>
+      <option value="2">Incomplete higher</option>
+      <option value="3">Higher education</option>
+      <option value="4">Academic degree</option>
+    </select>
+    <br><br>
+    Income Type:
+    <select id="income" name="income">
+      <option value="student">Student</option>
+      <option value="pensioner">Pensioner</option>
+      <option value="state servant">State Servant</option>
+      <option value="commercial associate">Commercial Associate</option>
+      <option value="working">Working</option>
+      </select>
+    <br><br>
+    Housing Type:
+    <select id="housing" name="housing">
+      <option value="ma">Municipal Apartment</option>
+      <option value="p">With Parents</option>
+      <option value="oa">Office Apartment</option>
+      <option value="ra">Rented Apartment</option>
+      <option value="h/a">House / Apartment</option>
+      <option value="ca">Co-op Apartment</option>
+      </select>
+    <br><br>
+    Occupation Type:
+    <select id="occupation" name="occupation">
+      <option value="cs">Cleaning staff</option>
+      <option value="security">Security staff</option>
+      <option value="sales">Sales staff</option>
+      <option value="accountants">Accountants</option>
+      <option value="laborer">Laborers</option>
+      <option value="m">Managers</option>
+      <option value="d">Drivers</option>
+      <option value="core">Core staff</option>
+      <option value="high">High skill tech staff</option>
+      <option value="ps">Private service staff</option>
+      <option value="cooking">Cooking staff</option>
+      <option value="low">Low-skill Laborers</option>
+      <option value="med">Medicine staff</option>
+      <option value="sec">Secretaries</option>
+      <option value="waiter">Waiters/barmen staff</option>
+      <option value="hr">HR staff</option>
+      <option value="realty">Realty agents</option>
+      <option value="it">IT staff</option>
+      <option value="other">Others</option>
+    </select>
+    <br><br>
+    Marital Status:
+    <select id="marital" name="marital">
+      <option value="single">Single / not married</option>
+      <option value="m">Married</option>
+      <option value="cm">Civil marriage</option>
+      <option value="separated">Separated</option>
+      <option value="w">Widow</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+
+  {% if pred %}
+  <p>The applicant is {{ pred }}</p>
+  {% endif %}
+
+  </body>
+</html>
