@@ -5,19 +5,26 @@
   <h2>Credit Card Applicant Prediction</h2>
   
   <form method="POST" action="/">
-    Annual Income:
-    <input type="number" name="annual_income" value=50000>
+    
+    Gender:
+    <select id="gender" name="gender">
+      <option value="female">Female</option>
+      <option value="male">Male</option>
+    </select>
     <br><br>
-    Birthday: (Count backwards from current day (0), -1 means yesterday)
-    <input type="number" name="birthday" value=-8000>
+    Birthday:
+    <input type="date" name="birthday">
     <br><br>
-    Days of Employment: (Count backwards from current day(0). If positive, it means the person currently unemployed)
-    <input type="number" name="days_employment" value=-1000>
+    Days of Employment:
+    <input type="date" name="days_employment">
     <br><br>
-     Family Size:
+    Family Size:
     <input type="number" name="family_size" value=2>
     <br><br>  
-     If Have a Work Phone:
+    Annual Income:
+    <input type="number" name="annual_income" value=50000>
+    <br><br> 
+    If Have a Work Phone:
     <select id="work_phone" name="work_phone">
       <option value=1>Yes</option>
       <option value=0>No</option>
@@ -45,12 +52,6 @@
     <select id="property" name="property">
       <option value="1">Yes</option>
       <option value="0">No</option>
-    </select>
-    <br><br>
-    Gender:
-    <select id="gender" name="gender">
-      <option value="female">Female</option>
-      <option value="male">Male</option>
     </select>
     <br><br>
     Education Type:

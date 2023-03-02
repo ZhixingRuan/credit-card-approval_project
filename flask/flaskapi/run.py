@@ -3,6 +3,7 @@ import json
 import numpy as np
 import pickle
 import pandas as pd
+import datetime
 
 with open("model.pkl", "rb") as f:
     model = pickle.load(f)
@@ -36,8 +37,6 @@ def index():
 
     if request.method == "POST":
         X['annual_income'] = request.form["annual_income"]
-        X['birthday'] = request.form["birthday"]
-        X['days_employment'] = request.form["days_employment"]
         X['family_size'] = request.form['family_size']
         X['work_phone'] = request.form['work_phone']
         X['phone'] = request.form['phone']
@@ -45,6 +44,14 @@ def index():
         X['car'] = request.form['car']
         X['property'] = request.form['property']
         X['education'] = request.form['education']
+
+        today = datetime.date.today()
+        b_day = datetime.datetime.strptime(
+                          request.form['birthday'], '%Y-%m-%d').date()
+        e_day = datetime.datetime.strptime(
+                          request.form['days_employment'], '%Y-%m-%d').date()
+        X['birthday'] = (b_day - today).days
+        X['days_employment'] = (e_day - today).days
 
         if request.form['gender'] == 'male':
             X['gender_M'] = 1
@@ -128,9 +135,9 @@ def index():
         
         pred = model.predict(X)
         if pred == 1:
-            pred = 'bad'
+            pred = 'declined!'
         else:
-            pred = 'good'
+            pred = 'approved!'
 
     return render_template("index.html", pred=pred)
 
