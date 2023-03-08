@@ -36,14 +36,14 @@ def index():
     X.columns = features
 
     if request.method == "POST":
-        X['annual_income'] = request.form["annual_income"]
-        X['family_size'] = request.form['family_size']
-        X['work_phone'] = request.form['work_phone']
-        X['phone'] = request.form['phone']
-        X['email'] = request.form['email']
-        X['car'] = request.form['car']
-        X['property'] = request.form['property']
-        X['education'] = request.form['education']
+        X['annual_income'] = float(request.form["annual_income"])
+        X['family_size'] = float(request.form['family_size'])
+        X['work_phone'] = int(request.form['work_phone'])
+        X['phone'] = int(request.form['phone'])
+        X['email'] = int(request.form['email'])
+        X['car'] = int(request.form['car'])
+        X['property'] = int(request.form['property'])
+        X['education'] = int(request.form['education'])
 
         today = datetime.date.today()
         b_day = datetime.datetime.strptime(
@@ -51,7 +51,10 @@ def index():
         e_day = datetime.datetime.strptime(
                           request.form['days_employment'], '%Y-%m-%d').date()
         X['birthday'] = (b_day - today).days
-        X['days_employment'] = (e_day - today).days
+        if (e_day - today).days > 0:
+            X['days_employment'] = 0
+        else:
+            X['days_employment'] = (e_day - today).days
 
         if request.form['gender'] == 'male':
             X['gender_M'] = 1
@@ -132,7 +135,8 @@ def index():
         elif request.form['marital'] == 'w':
             X['marital_Widow'] = 1
 
-        
+        print(X.values)
+        # raise Exception
         pred = model.predict(X)
         if pred == 1:
             pred = 'declined!'
